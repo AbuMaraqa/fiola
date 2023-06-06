@@ -122,7 +122,9 @@ Route::group(['prefix'=>'sales','middleware'=>'auth'],function (){
     Route::post('/create',[App\Http\Controllers\SalesController::class , 'create'])->name('sales.create');
     Route::get('/edit/{id}',[App\Http\Controllers\InvoicesController::class , 'edit'])->name('invoices.edit');
     Route::put('/update',[App\Http\Controllers\InvoicesController::class , 'update'])->name('invoices.update');
-    Route::get('/details/{id}',[App\Http\Controllers\InvoicesController::class , 'details'])->name('invoices.details');
+    Route::get('/details/{id}',[App\Http\Controllers\InvoicesController::class , 'details'])->name('sales.details');
+    Route::get('/deleteInvoiceItemsSales/{id}',[App\Http\Controllers\SalesController::class , 'deleteInvoiceItemsSales'])->name('sales.deleteInvoiceItemsSales');
+    Route::post('/editInvoiceItemsSales',[App\Http\Controllers\SalesController::class , 'editInvoiceItemsSales'])->name('sales.editInvoiceItemsSales');
 });
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InvoicesRequest;
 use App\Models\Color;
+use App\Models\InvoiceItems;
 use App\Models\Invoices;
 use App\Models\Pos;
 use App\Models\Products;
@@ -43,7 +44,7 @@ class InvoicesController extends Controller
         $data->inventory_id = $request->inventory_id;
         if ($data->save()){
             if ($request->invoices_type == 1){
-                return redirect()->route('sales.index',['invoice_id'=>$data->id]);
+                return redirect()->route('invoices.details',['id'=>$data->id]);
 //                return redirect()->route('sales.index',['invoice_id'=>$data->id]);
             }
 //            return redirect()->route('invoices.index')->with(['success'=>'تم اضافة البيانات بنجاح']);
@@ -60,6 +61,12 @@ class InvoicesController extends Controller
         $data['invoice_id'] = $id;
         $data['product'] = Products::get();
         $data['colors'] = Color::get();
-        return view('admin.sales.details',['data'=>$data]);
+        $invoice_item = InvoiceItems::where('invoice_id',$id)->get();
+        foreach ($invoice_item as $key){
+            $key->items = Products::where(['id'=>$key->product_id])->first();
+            $key->colors = Color::where(['id'=>$key->color_id])->first();
+        }
+        return view('admin.sales.details',['data'=>$data,'invoice_item'=>$invoice_item]);
     }
+
 }
