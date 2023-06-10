@@ -73,8 +73,8 @@
                                             </td>
                                         @endif
                                         <td>
-                                            <a class="btn btn-primary btn-sm" href="{{ route('sales.edit',['id'=>$key->id]) }}">تعديل</a>
-                                            <a class="btn btn-dark btn-sm" href="{{ route('sales.add',['id'=>$key->id]) }}">عرض</a>
+                                            <a class="btn btn-primary btn-sm" href="{{ route('purchases.edit',['id'=>$key->id]) }}">تعديل</a>
+                                            <a class="btn btn-dark btn-sm" href="{{ route('purchases.details',['id'=>$key->id]) }}">تفاصيل</a>
                                         </td>
                                     </tr>
                                 @endforeach

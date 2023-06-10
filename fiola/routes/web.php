@@ -117,14 +117,40 @@ Route::group(['prefix'=>'invoices','middleware'=>'auth'],function (){
 });
 
 Route::group(['prefix'=>'sales','middleware'=>'auth'],function (){
-    Route::get('/index/{invoice_id}',[App\Http\Controllers\SalesController::class , 'index'])->name('sales.index');
-    Route::get('/add',[App\Http\Controllers\InvoicesController::class , 'add'])->name('invoices.add');
+    Route::get('/index',[App\Http\Controllers\SalesController::class , 'index'])->name('sales.index');
+    Route::get('/add/{id}',[App\Http\Controllers\SalesController::class , 'add'])->name('sales.add');
     Route::post('/create',[App\Http\Controllers\SalesController::class , 'create'])->name('sales.create');
-    Route::get('/edit/{id}',[App\Http\Controllers\InvoicesController::class , 'edit'])->name('invoices.edit');
-    Route::put('/update',[App\Http\Controllers\InvoicesController::class , 'update'])->name('invoices.update');
-    Route::get('/details/{id}',[App\Http\Controllers\InvoicesController::class , 'details'])->name('sales.details');
+    Route::get('/edit/{id}',[App\Http\Controllers\SalesController::class , 'edit'])->name('sales.edit');
+    Route::put('/update',[App\Http\Controllers\SalesController::class , 'update'])->name('sales.update');
+    Route::get('/details/{id}',[App\Http\Controllers\SalesController::class , 'details'])->name('sales.details');
     Route::get('/deleteInvoiceItemsSales/{id}',[App\Http\Controllers\SalesController::class , 'deleteInvoiceItemsSales'])->name('sales.deleteInvoiceItemsSales');
     Route::post('/editInvoiceItemsSales',[App\Http\Controllers\SalesController::class , 'editInvoiceItemsSales'])->name('sales.editInvoiceItemsSales');
+    Route::get('/selectAllProductInInvoicesItems',[App\Http\Controllers\SalesController::class , 'selectAllProductInInvoicesItems'])->name('sales.selectAllProductInInvoicesItems');
+    Route::post('/createSalesInvoiceItems',[App\Http\Controllers\SalesController::class , 'createSalesInvoiceItems'])->name('sales.createSalesInvoiceItems');
+    Route::get('/getProductOnLoad/{id}',[App\Http\Controllers\SalesController::class , 'getProductOnLoad'])->name('sales.getProductOnLoad');
+    Route::get('/deleteProductFromSalesInvoice/{id}',[App\Http\Controllers\SalesController::class , 'deleteProductFromSalesInvoice'])->name('sales.deleteProductFromSalesInvoice');
+    Route::get('/deleteProductFromSalesInvoice/{id}',[App\Http\Controllers\SalesController::class , 'deleteProductFromSalesInvoice'])->name('sales.deleteProductFromSalesInvoice');
 });
+
+Route::group(['prefix'=>'purchases','middleware'=>'auth'],function (){
+    Route::get('/index',[App\Http\Controllers\PurchasesController::class , 'index'])->name('purchases.index');
+//    Route::get('/add',[App\Http\Controllers\InvoicesController::class , 'add'])->name('invoices.add');
+    Route::post('/create',[App\Http\Controllers\PurchasesController::class , 'create'])->name('purchases.create');
+    Route::get('/edit/{id}',[App\Http\Controllers\PurchasesController::class , 'edit'])->name('purchases.edit');
+    Route::put('/update',[App\Http\Controllers\PurchasesController::class , 'update'])->name('purchases.update');
+    Route::get('/details/{id}',[App\Http\Controllers\PurchasesController::class , 'details'])->name('purchases.details');
+    Route::get('/deleteInvoiceItemsSales/{id}',[App\Http\Controllers\PurchasesController::class , 'deleteInvoiceItemsSales'])->name('purchases.deleteInvoiceItemsSales');
+    Route::post('/editInvoiceItemsSales',[App\Http\Controllers\PurchasesController::class , 'editInvoiceItemsSales'])->name('purchases.editInvoiceItemsSales');
+});
+
+Route::group(['prefix'=>'system_setting','middleware'=>'auth'],function (){
+    Route::get('/index',[App\Http\Controllers\SystemSettingController::class , 'index'])->name('system_setting.index');
+    Route::get('/add',[App\Http\Controllers\SystemSettingController::class , 'add'])->name('system_setting.add');
+    Route::post('/create',[App\Http\Controllers\SystemSettingController::class , 'create'])->name('system_setting.create');
+    Route::get('/edit/{id}',[App\Http\Controllers\PurchasesController::class , 'edit'])->name('system_setting.edit');
+    Route::put('/update',[App\Http\Controllers\PurchasesController::class , 'update'])->name('system_setting.update');
+    Route::get('/details/{id}',[App\Http\Controllers\PurchasesController::class , 'details'])->name('system_setting.details');
+});
+
 
 

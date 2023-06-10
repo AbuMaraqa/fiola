@@ -1,20 +1,20 @@
 @extends('layouts.app')
 @section('title')
-    تعديل فاتورة مبيعات
+    تعديل فاتورة المشتريات
 @endsection
 @section('header_title')
-    تعديل فاتورة مبيعات
+    تعديل فاتورة المشتريات
 @endsection
 @section('header_link')
-    ادارة فاتورة مبيعات
+    ادارة فاتورة المشتريات
 @endsection
 @section('header_text')
-    تعديل فاتورة مبيعات
+    تعديل فاتورة المشتريات
 @endsection
 @section('content')
     <div class="container">
         <div class="card p-3">
-            <form action="{{ route('sales.update') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('purchases.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="hidden" value="{{ $data->id }}" name="id">

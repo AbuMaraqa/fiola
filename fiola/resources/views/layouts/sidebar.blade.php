@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">
+                    <a href="{{ route('purchases.index') }}" class="nav-link">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <p>
                             المشتريات
@@ -72,11 +72,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link"></a>
+                    <a href="{{ route('sales.index') }}" class="nav-link">
                         <i class="fa-solid fa-cart-plus"></i>
                         <p>
                             مبيعات
                         </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('invoices.index') }}" class="nav-link">
@@ -139,6 +140,14 @@
                         <i class="fa-solid fa-truck"></i>
                         <p>
                             شركات توصيل
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('system_setting.index') }}" class="nav-link">
+                        <i class="fa-solid fa-truck"></i>
+                        <p>
+                            اعدادات النظام
                         </p>
                     </a>
                 </li>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InvoicesRequest extends FormRequest
+class SystemSettingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,20 @@ class InvoicesRequest extends FormRequest
     public function rules()
     {
         $rules = [
+            'company_name'=>'required',
+            'address'=>'required',
+            'phone'=>'required|numeric',
         ];
-        if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
-            // Exclude validation rule for your_variable
-            unset($rules['invoices_type']);
-        }
         return $rules;
     }
 
     public function messages()
     {
         return [
-            'invoices_type.required'=>'حقل نوع الفاتورة مطلوب'
+            'company_name.required'=>'حقل اسم الشركة مطلوب',
+            'address.required'=>'حقل العنوان مطلوب',
+            'phone.required'=>'حقل رقم الهاتف مطلوب',
+            'phone.numeric'=>'يجب ان يحتوي على ارقام فقط',
         ];
     }
 }
